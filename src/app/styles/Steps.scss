@@ -1,0 +1,26 @@
+.menu .menu-logo {
+    fill: #39BA91;
+    color: #fff;
+    width: 140px;
+    height: 25px;
+    position: absolute;
+}
+.menu .menu__links {
+    padding-left: 25px;
+}
+.menu .active.menu__links {
+    color:#fff;
+}
+.menu .menu__links .number {
+    text-align: center;
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    font-size: .65rem;
+    vertical-align: .1rem;
+    background: #445261;
+    color: #9dabba;
+    font-weight: 600;
+    line-height: 1rem;
+}

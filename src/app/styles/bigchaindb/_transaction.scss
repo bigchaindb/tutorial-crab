@@ -1,0 +1,78 @@
+.transaction-container {
+
+}
+
+.transaction-container-actions {
+    margin-top: 1em
+}
+
+.transaction-header {
+    background: lighten(aquamarine, 20%);
+    border-bottom: 1px solid darken(aquamarine, 40%);
+    border-top: 1px solid darken(aquamarine, 40%);
+    margin-bottom: 1em;
+}
+
+.transaction-header,
+.transaction-body {
+    padding: 0.4em 1em;
+}
+
+.transaction-link {
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.transaction-row-label,
+.transaction-row-value {
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+}
+
+.transaction-flow-row {
+    margin: 1em;
+}
+
+.transaction-flow-col {
+    padding: 0;
+}
+
+.transaction-flow-title {
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.transaction-flow-body {
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    padding-right: 2em
+}
+
+.transaction-flow-glyph-right {
+    position: absolute;
+    left: -15px;
+}
+
+.transaction-list-null {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.transaction-panel {
+    border-bottom: 1px solid darken(aquamarine, 40%);
+    border-left: 1px solid rgba(0, 0, 0, 0);
+    border-right: 1px solid rgba(0, 0, 0, 0);
+    border-top: 1px solid rgba(0, 0, 0, 0);
+    &:hover {
+        background: white;
+        border: 1px solid darken(aquamarine, 40%);
+    }
+    &.hit {
+        background: lighten(red, 40%) !important;
+        border: 1px solid lighten(red, 20%);
+    }
+    margin-bottom: 1em;
+    max-width: 800px;
+}

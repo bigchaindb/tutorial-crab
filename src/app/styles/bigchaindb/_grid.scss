@@ -1,0 +1,242 @@
+//
+// Grid
+// --------------
+// bigchaindb.com
+//
+// adapted from github.com/kremalicious/kremalicious3/blob/master/_src/_assets/styl/grid.styl
+//
+
+
+//
+// More sane box model
+//
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+
+//
+// Base
+//
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.grid__col {
+    flex: 1;
+    // Firefox grid fix for whatever reason
+    min-height: 0;
+    min-width: 0;
+}
+
+.row {
+    max-width: calc(50em - #{$gutter-space * 2});
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: ($gutter-space / 2);
+    padding-right: ($gutter-space / 2);
+
+    @media ($screen-sm) {
+        padding-left: $gutter-space;
+        padding-right: $gutter-space;
+    }
+}
+
+.row--wide {
+    max-width: 70rem;
+}
+
+.row--narrow {
+    max-width: ($screen-md-min / 1.75);
+}
+
+
+//
+// Alignment per row
+//
+.grid--top {
+    align-items: flex-start;
+}
+
+.grid--bottom {
+    align-items: flex-end;
+}
+
+.grid--center {
+    align-items: center;
+}
+
+.grid--justifycenter {
+    justify-content: center;
+}
+
+
+//
+// Alignment per cell
+//
+.grid__col--top {
+    align-self: flex-start;
+}
+
+.grid__col--bottom {
+    align-self: flex-end;
+}
+
+.grid__col--center {
+    align-self: center;
+}
+
+
+//
+// Gutters
+//
+@mixin grid-gutters() {
+    margin: -($gutter-space) 0 $gutter-space (-($gutter-space));
+
+    > .grid__col {
+        padding: $gutter-space 0 0 $gutter-space;
+    }
+}
+
+.grid--gutters {
+    @include grid-gutters();
+}
+
+@media ($screen-sm) {
+    .grid-small--gutters {
+        @include grid-gutters();
+    }
+}
+
+@media ($screen-md) {
+    .grid-medium--gutters {
+        @include grid-gutters();
+    }
+}
+
+@media ($screen-lg) {
+    .grid-large--gutters {
+        @include grid-gutters();
+    }
+}
+
+
+//
+// Columns
+//
+@mixin grid-columns() {
+    > .grid__col {
+        max-width: none;
+
+        &.grid__col--1 { flex: 0 0 16%; }
+        &.grid__col--2 { flex: 0 0 33.3%; }
+        &.grid__col--3 { flex: 0 0 50%; }
+        &.grid__col--4 { flex: 0 0 66.6%; }
+        &.grid__col--5 { flex: 0 0 84%; }
+        &.grid__col--6 { flex: 0 0 100%; }
+    }
+}
+
+.grid--fit {
+    > .grid__col { flex: 1; }
+}
+
+.grid--full {
+    > .grid__col { flex: 0 0 100%; }
+}
+
+.grid--third {
+    > .grid__col { flex: 0 0 33.3%; }
+}
+
+.grid--half {
+    > .grid__col {
+        flex: 0 0 50%;
+        max-width: 50%; // IE 11 workaround for bug (flex-basis doesn't account for box-sizing:border-box)
+    }
+}
+
+.grid--columns {
+    @include grid-columns();
+}
+
+@media ($screen-sm) {
+    .grid-small--columns {
+        @include grid-columns();
+    }
+
+    .grid-small--fit {
+        > .grid__col { flex: 1; }
+    }
+
+    .grid-small--full {
+        > .grid__col { flex: 0 0 100%; }
+    }
+
+    .grid-small--third {
+        > .grid__col { flex: 0 0 33.3%; }
+    }
+
+    .grid-small--half {
+        > .grid__col {
+            flex: 0 0 50%;
+            max-width: 50%; // IE 11 workaround for bug (flex-basis doesn't account for box-sizing:border-box)
+        }
+    }
+}
+
+@media ($screen-md) {
+    .grid-medium--columns {
+        @include grid-columns();
+    }
+
+    .grid-medium--fit {
+        > .grid__col { flex: 1; }
+    }
+
+    .grid-medium--full {
+        > .grid__col { flex: 0 0 100%; }
+    }
+
+    .grid-medium--third {
+        > .grid__col { flex: 0 0 33.3%; }
+    }
+
+    .grid-medium--half {
+        > .grid__col {
+            flex: 0 0 50%;
+            max-width: 50%; // IE 11 workaround for bug (flex-basis doesn't account for box-sizing:border-box)
+        }
+    }
+}
+
+@media ($screen-lg) {
+    .grid-large--columns {
+        @include grid-columns();
+    }
+
+    .grid-large--fit {
+        > .grid__col { flex: 1; }
+    }
+
+    .grid-large--full {
+        > .grid__col { flex: 0 0 100%; }
+    }
+
+    .grid-large--third {
+        > .grid__col { flex: 0 0 33.3%; }
+    }
+
+    .grid-large--half {
+        > .grid__col {
+            flex: 0 0 50%;
+            max-width: 50%; // IE 11 workaround for bug (flex-basis doesn't account for box-sizing:border-box)
+        }
+    }
+}
