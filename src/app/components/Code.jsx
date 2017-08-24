@@ -34,11 +34,16 @@ class Code extends React.Component {
                         <div><span className="c">const aliceKeypair = new driver.Ed25519Keypair()</span></div>
                         <div className="comment">// from defined models in our bdborm</div>
                         <div className="comment">// we create crab with Alice as owner</div>
-                        <div><span className="c">{"bdborm.models.crab.create({"}</span></div>
-                        <div><span className="ci">owner:aliceKeypair</span></div>
+                        <div><span className="c">{"bdborm.crab.create({"}</span></div>
+                        <div><span className="ci">publicKey: aliceKeypair.publicKey,</span></div>
+                        <div><span className="ci">privateKey: aliceKeypair.privateKey,</span></div>
+                        <div><span className="ci">metadata: {"{key:metavalue}"}</span></div>
                         <div><span className="c">{"}).then((crab)=>{"}</span></div>
-                        <div><span className="ci comment">// crab is object with data and functions</span></div>
-                        <div><span className="ci">console.log(crab.transaction.asset.data.crab)</span></div>
+                        <div><span className="ci comment">// crab is object with all our data and functions</span></div>
+                        <div><span className="ci comment">// crab.id is id of crab</span></div>
+                        <div><span className="ci comment">// crab.metadata is metadata of last transaction</span></div>
+                        <div><span className="ci comment">// crab.transactionList is list of raw transaction history</span></div>
+                        <div><span className="ci">console.log(crab.id)</span></div>
                         <div><span className="c">{"}"}</span></div>
 
                     </code>
