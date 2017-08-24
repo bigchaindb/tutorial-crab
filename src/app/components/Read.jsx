@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Code from './Code'
 import Output from './Output'
 
-import bdborm from '../bdborm/bdbinit'
+import bdborm from '../initdb'
 
 class Read extends React.Component {
     constructor(props) {

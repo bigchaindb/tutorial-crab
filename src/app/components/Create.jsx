@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Code from './Code'
 import Output from './Output'
 
-import bdborm from '../bdborm/bdbinit'
+import bdborm from '../initdb'
 
 class Create extends React.Component {
     constructor(props) {
@@ -17,9 +17,9 @@ class Create extends React.Component {
     }
     createCrab(){
         this.aliceKeypair = new driver.Ed25519Keypair()
-        bdborm.models.crab.create({owner:this.aliceKeypair}).then((crab)=>{
-            this.setState({output:JSON.stringify(crab.transaction.asset.data.crab,null,2)})
-            localStorage.setItem('didid', crab.transaction.asset.data.crab.id);
+        bdborm.crab.create({publicKey:this.aliceKeypair.publicKey,privateKey:this.aliceKeypair.privateKey,metadata:{meta:'toMeta4You'}}).then((crab)=>{
+            this.setState({output:JSON.stringify(crab,null,2)})
+            localStorage.setItem('crabid', crab.id);
         })
     }
     render() {
