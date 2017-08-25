@@ -8,7 +8,7 @@ export default class Connection {
         this.conn = new driver.Connection(path, headers)
     }
 
-    getAssetId(tx){
+    getAssetId(tx) {
         return tx.operation === 'CREATE' ? tx.id : tx.asset.id
     }
 
@@ -63,8 +63,7 @@ export default class Connection {
             return this.conn.postTransaction(txSigned)
                 .then(() => this.conn.pollStatusAndFetchTransaction(txSigned.id))
                 .then(() => txSigned)
-        }
-        catch (error) {
+        } catch (error) {
             return Promise.reject(error)
         }
     }
@@ -88,8 +87,7 @@ export default class Connection {
                 .then(() =>
                     this.conn.pollStatusAndFetchTransaction(txTransferSigned.id))
                 .then(() => txTransferSigned)
-        }
-        catch (error) {
+        } catch (error) {
             return Promise.reject(error)
         }
     }

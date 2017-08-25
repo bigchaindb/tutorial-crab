@@ -1,5 +1,5 @@
 import Connection from './connection'
-import ormObject from './ormobject'
+import OrmObject from './ormobject'
 
 export default class Orm {
     constructor(connectionUrl, headers) {
@@ -7,7 +7,7 @@ export default class Orm {
         this.appId = headers.app_id
     }
     define(modelName, modelShema) {
-        this[modelName] = new ormObject(
+        this[modelName] = new OrmObject(
             modelName,
             modelShema,
             this.connection,

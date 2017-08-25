@@ -11,23 +11,23 @@ import Steps from './Steps'
 
 const App = () => (
     <Router>
-      <div>
+        <div>
 
-        <Steps/>
+            <Steps/>
 
-        <div className="app__content">
+            <div className="app__content">
 
-            <Route exact path="/" component={Home}/>
-            <Route path="/create" component={Create}/>
-            <Route path="/retrieve" component={Retrieve}/>
-            <Route path="/append" component={Append}/>
-            <Route path="/burn" component={Burn}/>
+                <Route exact path="/" component={Home}/>
+                <Route path="/create" component={Create}/>
+                <Route path="/retrieve" component={Retrieve}/>
+                <Route path="/append" component={Append}/>
+                <Route path="/burn" component={Burn}/>
 
-            <Redirect from='*' to='/' />
+                <Redirect from='*' to='/' />
+
+            </div>
 
         </div>
-
-      </div>
     </Router>
 )
 

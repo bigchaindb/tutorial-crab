@@ -3,16 +3,16 @@ import React from 'react'
 class Output extends React.Component {
     render() {
         return (
-          <header>
-              <aside className="code-example">
-                  <pre>
-                      <code>
-                          {this.props.output}
-                      </code>
-                  </pre>
-              </aside>
-          </header>
-      );
+            <header>
+                <aside className="code-example">
+                    <pre>
+                        <code>
+                            {this.props.output}
+                        </code>
+                    </pre>
+                </aside>
+            </header>
+        )
     }
 }
 

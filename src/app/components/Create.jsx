@@ -1,6 +1,6 @@
 import * as driver from 'bigchaindb-driver' // eslint-disable-line import/no-namespace
 import React from 'react'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Code from './Code'
 import Output from './Output'
@@ -9,24 +9,24 @@ import bdborm from '../initdb'
 
 class Create extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            output: ""
+            output: ''
         }
-        this.createCrab = this.createCrab.bind(this);
+        this.createCrab = this.createCrab.bind(this)
     }
-    createCrab(){
+    createCrab() {
         this.aliceKeypair = new driver.Ed25519Keypair()
         bdborm.crab
             .create({
-                keypair:this.aliceKeypair,
-                metadata:{meta:'toMeta4You'}
+                keypair: this.aliceKeypair,
+                metadata: { meta: 'toMeta4You' }
             })
-            .then((crab)=>{
-                this.setState({output:JSON.stringify(crab.id,null,2)})
-                localStorage.setItem('crabid', crab.id);
+            .then((crab) => {
+                this.setState({ output: JSON.stringify(crab.id, null, 2) })
+                localStorage.setItem('crabid', crab.id)
             })
-            .catch(error=>console.error(error))
+            .catch(error => console.error(error))
     }
     render() {
         return (
@@ -39,7 +39,8 @@ class Create extends React.Component {
                 <div className="exampleHolder">
                     <div className="sideHolder">
                         <Code step="create"/>
-                        <button className="button button--primary button-block" onClick={this.createCrab}>
+                        <button className="button button--primary button-block"
+                            onClick={this.createCrab}>
                             Execute code
                         </button>
                     </div>
@@ -49,7 +50,7 @@ class Create extends React.Component {
                             <Link className="button button--primary button-block" to="/retrieve">
                                 Next step: retrieve
                             </Link>
-                        : null }
+                            : null }
                     </div>
                 </div>
             </div>

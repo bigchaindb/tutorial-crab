@@ -1,6 +1,6 @@
 import * as driver from 'bigchaindb-driver' // eslint-disable-line import/no-namespace
 import React from 'react'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Code from './Code'
 import Output from './Output'
@@ -9,23 +9,24 @@ import bdborm from '../initdb'
 
 class Burn extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            output: ""
+            output: ''
         }
-        this.burnCrab = this.burnCrab.bind(this);
+        this.burnCrab = this.burnCrab.bind(this)
     }
-    burnCrab(){
+    burnCrab() {
         this.aliceKeypair = new driver.Ed25519Keypair()
-        bdborm.crab.create({keypair:this.aliceKeypair,metadata:{key:'metavalue'}}).then((crab)=>{
-            crab.burn({
-                keypair: this.aliceKeypair
+        bdborm.crab.create({ keypair: this.aliceKeypair, metadata: { key: 'metavalue' } })
+            .then((crab) => {
+                crab.burn({
+                    keypair: this.aliceKeypair
+                })
+                    .then((burnedCrab) => {
+                        this.setState({ output: JSON.stringify(burnedCrab.metadata, null, 2) })
+                    })
+                    .catch(error => console.error(error))
             })
-            .then((burnedCrab)=>{
-                this.setState({output:JSON.stringify(burnedCrab.metadata,null,2)})
-            })
-            .catch(error=>console.error(error))
-        })
     }
     render() {
         return (
@@ -47,7 +48,7 @@ class Burn extends React.Component {
                             <Link className="button button--primary button-block" to="/home">
                                 Back home
                             </Link>
-                        : null }
+                            : null }
                     </div>
                 </div>
             </div>
