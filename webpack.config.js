@@ -1,6 +1,8 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var path = require('path');
-var CONTENT_DIR = path.resolve(__dirname, 'src');
+const path = require('path')
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+const CONTENT_DIR = path.resolve(__dirname, 'src')
 
 module.exports = {
     entry: './src/app/index.jsx',
@@ -23,7 +25,7 @@ module.exports = {
                 loader: ExtractTextPlugin.extract('css-loader!sass-loader')
             }
         ]
-       },
+    },
     plugins: [
         new ExtractTextPlugin('public/styles.css', {
             allChunks: true
@@ -38,4 +40,4 @@ module.exports = {
             index: 'index.html'
         }
     }
-};
+}
