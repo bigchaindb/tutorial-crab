@@ -2,9 +2,9 @@ import Connection from './connection'
 import ormObject from './ormobject'
 
 export default class Orm {
-    constructor(connectionUrl, appId) {
+    constructor(connectionUrl, headers) {
         this.connection = new Connection(connectionUrl)
-        this.appId = appId
+        this.appId = headers.app_id
     }
     define(modelName, modelShema) {
         this[modelName] = new ormObject(

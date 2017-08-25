@@ -33,13 +33,18 @@ class Read extends React.Component {
               </div>
               <div className="exampleHolder">
                   <div className="sideHolder">
-                      <Code step="retreive" language="nodejs"/>
+                      <Code step="retreive"/>
                       <button className="button button--primary button-block" onClick={this.retrieveCrab}>
                           Execute code
                       </button>
                   </div>
                   <div className="sideHolder">
                       <Output output={this.state.output}/>
+                      { this.state.output ?
+                          <Link className="button button--primary button-block" to="/append">
+                              Next step: append
+                          </Link>
+                      : null }
                   </div>
               </div>
           </div>

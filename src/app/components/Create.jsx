@@ -38,13 +38,18 @@ class Create extends React.Component {
                 </div>
                 <div className="exampleHolder">
                     <div className="sideHolder">
-                        <Code step="create" language="nodejs"/>
+                        <Code step="create"/>
                         <button className="button button--primary button-block" onClick={this.createCrab}>
                             Execute code
                         </button>
                     </div>
                     <div className="sideHolder">
                         <Output output={this.state.output}/>
+                        { this.state.output ?
+                            <Link className="button button--primary button-block" to="/retrieve">
+                                Next step: retrieve
+                            </Link>
+                        : null }
                     </div>
                 </div>
             </div>

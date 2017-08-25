@@ -23,8 +23,8 @@ class Append extends React.Component {
                 keypair: this.aliceKeypair,
                 metadata: {key:'newvalue'}
             })
-            .then((apendedCrab)=>{
-                this.setState({output:JSON.stringify(apendedCrab.metadata,null,2)})
+            .then((appendedCrab)=>{
+                this.setState({output:JSON.stringify(appendedCrab.metadata,null,2)})
             })
             .catch(error=>console.error(error))
         })
@@ -38,13 +38,18 @@ class Append extends React.Component {
               </div>
               <div className="exampleHolder">
                   <div className="sideHolder">
-                      <Code step="append" language="nodejs"/>
+                      <Code step="append"/>
                       <button className="button button--primary button-block" onClick={this.appendCrab}>
                           Execute code
                       </button>
                   </div>
                   <div className="sideHolder">
                       <Output output={this.state.output}/>
+                      { this.state.output ?
+                          <Link className="button button--primary button-block" to="/burn">
+                              Next step: burn
+                          </Link>
+                      : null }
                   </div>
               </div>
           </div>

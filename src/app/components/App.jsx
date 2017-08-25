@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 
 import Home from './Home'
 import Create from './Create'
@@ -22,6 +22,8 @@ const App = () => (
             <Route path="/retrieve" component={Retrieve}/>
             <Route path="/append" component={Append}/>
             <Route path="/burn" component={Burn}/>
+
+            <Redirect from='*' to='/' />
 
         </div>
 

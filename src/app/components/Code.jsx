@@ -10,7 +10,10 @@ class Code extends React.Component {
                         <div className="comment">// import bdborm</div>
                         <div><span className="c">import Bdborm from '../bdborm'</span></div>
                         <div className="comment">// connect to bigchaindb</div>
-                        <div><span className="c">const bdborm = new Bdborm("http://localhost","appId")</span></div>
+                        <div><span className="c">const bdborm = new Bdborm("https://test.ipdb.io/api/v1/",{"{"}</span></div>
+                        <div><span className="ci">app_id: "Get one from developers.ipdb.io",</span></div>
+                        <div><span className="ci">app_key: "Same as app_id"</span></div>
+                        <div><span className="c">{"})"}</span></div>
                         <div className="comment">// define our models and assets</div>
                         <div><span className="c">bdborm.define("crab","https://example.com/v1/crab")</span></div>
                         <div className="comment">// export our dbdorm</div>
