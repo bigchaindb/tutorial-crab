@@ -7,6 +7,11 @@ export default class Orm {
         this.appId = appId
     }
     define(modelName, modelShema) {
-        this[modelName] = new ormObject(modelName, modelShema, this.connection, this.appId)
+        this[modelName] = new ormObject(
+            modelName,
+            modelShema,
+            this.connection,
+            this.appId
+        )
     }
 }

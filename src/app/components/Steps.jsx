@@ -13,8 +13,8 @@ class Steps extends React.Component {
                 <NavLink className="menu__links" activeClassName="active" to="/create">
                   <span className="number">1</span> Create
                 </NavLink>
-                <NavLink className="menu__links" activeClassName="active" to="/read">
-                  <span className="number">2</span> Read
+                <NavLink className="menu__links" activeClassName="active" to="/retrieve">
+                  <span className="number">2</span> Retrieve
                 </NavLink>
                 <NavLink className="menu__links" activeClassName="active" to="/append">
                   <span className="number">3</span> Append

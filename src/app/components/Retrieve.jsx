@@ -13,25 +13,28 @@ class Read extends React.Component {
         this.state = {
             output: ""
         }
-        this.readCrab = this.readCrab.bind(this);
+        this.retrieveCrab = this.retrieveCrab.bind(this);
     }
-    readCrab(){
-        bdborm.models.crab.search().then((crabs)=>{
-            this.setState({output:JSON.stringify(crabs[crabs.length-1].transaction.asset.data.crab,null,2)})
-        })
+    retrieveCrab(){
+        bdborm.crab.retrieve()
+            .then(crabs=>{
+                const crabIds = crabs.map(crab=>{return crab.id})
+                this.setState({output:JSON.stringify(crabIds,null,2)})
+            })
+            .catch(error=>console.error(error))
     }
     render() {
         return (
           <div className="row row--wide">
               <div>
-                  <h1>Read</h1>
-                  <div>Read asset you created earlier.</div>
+                  <h1>Retrieve</h1>
+                  <div>Retrieve asset you created earlier.</div>
                   <br/>
               </div>
               <div className="exampleHolder">
                   <div className="sideHolder">
-                      <Code step="read" language="nodejs"/>
-                      <button className="button button--primary button-block" onClick={this.readCrab}>
+                      <Code step="retreive" language="nodejs"/>
+                      <button className="button button--primary button-block" onClick={this.retrieveCrab}>
                           Execute code
                       </button>
                   </div>

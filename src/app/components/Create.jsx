@@ -17,10 +17,16 @@ class Create extends React.Component {
     }
     createCrab(){
         this.aliceKeypair = new driver.Ed25519Keypair()
-        bdborm.crab.create({publicKey:this.aliceKeypair.publicKey,privateKey:this.aliceKeypair.privateKey,metadata:{meta:'toMeta4You'}}).then((crab)=>{
-            this.setState({output:JSON.stringify(crab.id,null,2)})
-            localStorage.setItem('crabid', crab.id);
-        })
+        bdborm.crab
+            .create({
+                keypair:this.aliceKeypair,
+                metadata:{meta:'toMeta4You'}
+            })
+            .then((crab)=>{
+                this.setState({output:JSON.stringify(crab.id,null,2)})
+                localStorage.setItem('crabid', crab.id);
+            })
+            .catch(error=>console.error(error))
     }
     render() {
         return (
@@ -42,7 +48,7 @@ class Create extends React.Component {
                     </div>
                 </div>
             </div>
-          )
+        )
     }
 }
 

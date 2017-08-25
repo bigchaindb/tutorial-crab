@@ -1,3 +1,4 @@
+import * as driver from 'bigchaindb-driver' // eslint-disable-line import/no-namespace
 import React from 'react'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
@@ -17,16 +18,23 @@ class Burn extends React.Component {
         this.burnCrab = this.burnCrab.bind(this);
     }
     burnCrab(){
-        bdborm.models.crab.create({owner:this.bobKeypair}).then((crab)=>{
-            this.setState({output:JSON.stringify(crab.transaction.asset.data.crab,null,2)})
-        })
+      this.aliceKeypair = new driver.Ed25519Keypair()
+      bdborm.crab.create({keypair:this.aliceKeypair,metadata:{key:'metavalue'}}).then((crab)=>{
+          crab.burn({
+              keypair: this.aliceKeypair
+          })
+          .then((burnedCrab)=>{
+              this.setState({output:JSON.stringify(burnedCrab.metadata,null,2)})
+          })
+          .catch(error=>console.error(error))
+      })
     }
     render() {
         return (
           <div className="row row--wide">
               <div>
                   <h1>Burn</h1>
-                  Burn crab data. {this.state.identityBob.privateKey},{this.state.identityBob.publicKey},{this.state.identityAlice.privateKey},{this.state.identityAlice.publicKey}<br/><br/>
+                  <div>Burn crab data.</div><br/>
               </div>
               <div className="exampleHolder">
                   <div className="sideHolder">

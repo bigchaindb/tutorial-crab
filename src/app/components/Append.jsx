@@ -17,21 +17,16 @@ class Append extends React.Component {
     }
     appendCrab(){
         this.aliceKeypair = new driver.Ed25519Keypair()
-        bdborm.models.crab.create({owner:this.aliceKeypair}).then((crab)=>{
-
-            console.log("created crab")
-            console.log(crab)
-
-            const appendData = {status:'appended crabby'}
+        bdborm.crab.create({keypair:this.aliceKeypair,metadata:{key:'metavalue'}}).then((crab)=>{
             crab.append({
                 toPublicKey: this.aliceKeypair.publicKey,
-                authorizedBy: this.aliceKeypair,
-                append: appendData
-            }).then((apendedCrab)=>{
-                console.log("appended crab")
-                console.log(apendedCrab)
-                this.setState({output:JSON.stringify(apendedCrab.transaction.asset.data.crab,null,2)})
+                keypair: this.aliceKeypair,
+                metadata: {key:'newvalue'}
             })
+            .then((apendedCrab)=>{
+                this.setState({output:JSON.stringify(apendedCrab.metadata,null,2)})
+            })
+            .catch(error=>console.error(error))
         })
     }
     render() {
