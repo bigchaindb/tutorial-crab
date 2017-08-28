@@ -7,10 +7,10 @@ class Code extends React.Component {
             <div className="code-example">
                 <pre>
                     <code>
-                        <div className="comment">// import bdborm</div>
-                        <div><span className="c">import Bdborm from '../bdborm'</span></div>
+                        <div className="comment">// import orm</div>
+                        <div><span className="c">import Orm from 'bigchaindb-orm'</span></div>
                         <div className="comment">// connect to bigchaindb</div>
-                        <div><span className="c">const bdborm = new Bdborm("https://test.ipdb.io/api/v1/",{'{'}</span></div>
+                        <div><span className="c">const bdborm = new Orm("https://test.ipdb.io/api/v1/",{'{'}</span></div>
                         <div><span className="ci">app_id: "Get one from developers.ipdb.io",</span></div>
                         <div><span className="ci">app_key: "Same as app_id"</span></div>
                         <div><span className="c">{'})'}</span></div>
@@ -29,8 +29,6 @@ class Code extends React.Component {
             <div className="code-example">
                 <pre>
                     <code>
-                        <div className="comment">// import our bdborm</div>
-                        <div><span className="c">import bdborm from './bdborm'</span></div>
                         <div className="comment">// import bigchaindb-driver</div>
                         <div><span className="c">import * as driver from 'bigchaindb-driver'</span></div>
                         <div className="comment">// create public and private key for Alice</div>
@@ -58,8 +56,6 @@ class Code extends React.Component {
             <div className="code-example">
                 <pre>
                     <code>
-                        <div className="comment">// import our bdborm</div>
-                        <div><span className="c">import bdborm from './bdborm'</span></div>
                         <div className="comment">// get all crabs with retrieve()</div>
                         <div className="comment">// or get specific crab with retrieve("crabid")</div>
                         <div><span className="c">bdborm.crab.retrieve().then((crabs)=>{'{'}</span></div>
@@ -78,8 +74,6 @@ class Code extends React.Component {
             <div className="code-example">
                 <pre>
                     <code>
-                        <div className="comment">// imports</div>
-                        <div><span className="c">import bdborm from './bdborm'</span></div>
                         <div><span className="c">import * as driver from 'bigchaindb-driver'</span></div>
                         <div className="comment">// create public and private key for Alice</div>
                         <div><span className="c">const aliceKeypair = new driver.Ed25519Keypair()</span></div>
@@ -111,8 +105,6 @@ class Code extends React.Component {
             <div className="code-example">
                 <pre>
                     <code>
-                        <div className="comment">// imports</div>
-                        <div><span className="c">import bdborm from './bdborm'</span></div>
                         <div><span className="c">import * as driver from 'bigchaindb-driver'</span></div>
                         <div className="comment">// create public and private key for Alice</div>
                         <div><span className="c">const aliceKeypair = new driver.Ed25519Keypair()</span></div>
