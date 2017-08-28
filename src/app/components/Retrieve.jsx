@@ -13,12 +13,12 @@ class Read extends React.Component {
         this.state = {
             output: ''
         }
-        this.retrieveCrab = this.retrieveCrab.bind(this);
+        this.retrieveCrab = this.retrieveCrab.bind(this)
     }
     retrieveCrab() {
         bdborm.crab.retrieve()
             .then(crabs => {
-                const crabIds = crabs.map(crab => { return crab.id })
+                const crabIds = crabs.map(crab => crab.id)
                 this.setState({ output: JSON.stringify(crabIds, null, 2) })
             })
             .catch(error => console.error(error))
@@ -33,7 +33,7 @@ class Read extends React.Component {
                 </div>
                 <div className="exampleHolder">
                     <div className="sideHolder">
-                        <Code step="retreive"/>
+                        <Code step="retrieve"/>
                         <button className="button button--primary button-block"
                             onClick={this.retrieveCrab}>
                             Execute code

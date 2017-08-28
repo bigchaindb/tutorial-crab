@@ -1,0 +1,14 @@
+@import "./bigchaindb/variables";
+
+body {
+    background: $brand-main-gray;
+    color: $brand-main-gray-light;
+}
+
+h1 {
+    color: $brand-main-gray-light
+}
+
+.row--wide {
+    max-width: 1200px;
+}

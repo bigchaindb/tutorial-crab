@@ -17,17 +17,13 @@
 @import './bigchaindb/code';
 @import './bigchaindb/modal';
 
-@import './bigchaindb/account';
-@import './bigchaindb/asset';
-@import './bigchaindb/card';
-@import './bigchaindb/search';
 @import './bigchaindb/sidebar';
 @import './bigchaindb/style';
-@import './bigchaindb/transaction';
 
 //
 // Page specific
 //
+@import './App';
 @import './Steps';
 @import './Layout';
 @import './Code';

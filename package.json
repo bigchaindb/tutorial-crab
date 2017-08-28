@@ -15,9 +15,11 @@
     "bigchaindb-driver": "^0.3.0",
     "bigchaindb-orm": "0.1.5",
     "bip39": "^2.3.1",
+    "dotenv-webpack": "^1.5.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.2",
+    "react-syntax-highlighter": "^5.7.0",
     "reconnect-core": "^1.3.0",
     "simple-websocket": "^5.0.2",
     "uuid": "^3.1.0"
