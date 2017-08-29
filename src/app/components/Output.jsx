@@ -4,10 +4,12 @@ class Output extends React.Component {
     render() {
         return (
             <header>
-                <aside className="code-example">
+                <aside className="code-example code-output">
                     <pre>
                         <code>
-                            {this.props.output}
+                            {
+                                this.props.output || '> Bleep Bop... Waiting for input'
+                            }
                         </code>
                     </pre>
                 </aside>

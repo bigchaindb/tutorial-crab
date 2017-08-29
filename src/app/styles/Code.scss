@@ -7,6 +7,15 @@ $code--text: $brand-main-gray-lighter;
     margin: 0 auto;
 }
 
+.code-output {
+    margin: 45px;
+    pre {
+        overflow: auto;
+        height: 100%;
+        border: 1px solid $brand-main-green;
+    }
+}
+
 .code-example__header {
     text-align: left;
     margin: 1rem 0;

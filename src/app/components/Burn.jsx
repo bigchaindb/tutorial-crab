@@ -1,32 +1,35 @@
-import * as driver from 'bigchaindb-driver' // eslint-disable-line import/no-namespace
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import TutorialStep from './TutorialStep'
 import Code from './Code'
 import Output from './Output'
 
 import bdborm from '../initdb'
 
-class Burn extends React.Component {
+class Burn extends TutorialStep {
     constructor(props) {
         super(props)
-        this.state = {
-            output: ''
-        }
         this.burnCrab = this.burnCrab.bind(this)
     }
     burnCrab() {
-        this.aliceKeypair = new driver.Ed25519Keypair()
-        bdborm.crab.create({ keypair: this.aliceKeypair, metadata: { key: 'metavalue' } })
-            .then((crab) => {
-                crab.burn({
-                    keypair: this.aliceKeypair
-                })
-                    .then((burnedCrab) => {
-                        this.setState({ output: JSON.stringify(burnedCrab.metadata, null, 2) })
-                    })
-                    .catch(error => console.error(error))
+        bdborm.crab
+            .retrieve(this.state.crab.id)
+            .then(crabs => {
+                if (crabs.length) {
+                    return crabs[0].burn(
+                        {
+                            keypair: this.state.keypair
+                        })
+                }
             })
+            .then((burnedCrab) => {
+                this.setState({
+                    output: JSON.stringify(burnedCrab.metadata, null, 2)
+                })
+                localStorage.clear()
+            })
+            .catch(error => console.error(error))
     }
     render() {
         return (
@@ -45,7 +48,7 @@ class Burn extends React.Component {
                     <div className="sideHolder">
                         <Output output={this.state.output}/>
                         { this.state.output ?
-                            <Link className="button button--primary button-block" to="/home">
+                            <Link className="button button--primary button-block" to="/">
                                 Back home
                             </Link>
                             : null }

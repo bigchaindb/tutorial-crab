@@ -77,61 +77,37 @@ bdbOrm.crabModel
     }
 
     append() {
-        return (
-            <div className="code-example">
-                <pre>
-                    <code>
-                        <div><span className="c">import * as driver from 'bigchaindb-driver'</span></div>
-                        <div className="comment">// create public and private key for Alice</div>
-                        <div><span className="c">const aliceKeypair = new driver.Ed25519Keypair()</span></div>
-                        <div className="comment">// create crab with Alice as owner</div>
-                        <div><span className="c">{'bdborm.crab.create({'}</span></div>
-                        <div><span className="ci">keypair: aliceKeypair,</span></div>
-                        <div><span className="ci">metadata: {"{key:'metavalue'}"}</span></div>
-                        <div><span className="c">{'}).then((crab)=>{'}</span></div>
-                        <div><span className="ci comment">// lets append metadata of our crab</span></div>
-                        <div><span className="ci">crab.append({'{'}</span></div>
-                        <div><span className="ci2">toKeypair: aliceKeypair.publicKey,</span></div>
-                        <div><span className="ci2">keypair: aliceKeypair,</span></div>
-                        <div><span className="ci2">metadata: {"{key:'newvalue'}"}</span></div>
-                        <div><span className="ci">{'}).then((appendedCrab)=>{'}</span></div>
-                        <div><span className="ci2 comment">// appendedCrab is last state</span></div>
-                        <div><span className="ci2 comment">// of our crab so any actions</span></div>
-                        <div><span className="ci2 comment">// need to be done to appendedCrab</span></div>
-                        <div><span className="ci2">console.log(appendedCrab.metadata)</span></div>
-                        <div><span className="ci">{'})'}</span></div>
-                        <div><span className="c">{'})'}</span></div>
-                    </code>
-                </pre>
-            </div>
-        )
+        const code = `// update our retrieved crab
+crab.append(
+    {
+        toPublicKey: aliceKeypair.publicKey,
+        keypair: aliceKeypair,
+        metadata: { key: 'updatedValue' }
+    })  
+    .then(updatedCrab => {
+        // updatedCrab contains the last (unspent) state
+        // of our crab so any actions
+        // need to be done to updatedCrab
+        console.log(updatedCrab.metadata)
+    })
+`
+        return this.renderCode(code)
     }
 
     burn() {
-        return (
-            <div className="code-example">
-                <pre>
-                    <code>
-                        <div><span className="c">import * as driver from 'bigchaindb-driver'</span></div>
-                        <div className="comment">// create public and private key for Alice</div>
-                        <div><span className="c">const aliceKeypair = new driver.Ed25519Keypair()</span></div>
-                        <div className="comment">// create crab with Alice as owner</div>
-                        <div><span className="c">{'bdborm.crab.create({'}</span></div>
-                        <div><span className="ci">keypair: aliceKeypair,</span></div>
-                        <div><span className="ci">metadata: {"{key:'metavalue'}"}</span></div>
-                        <div><span className="c">{'}).then((crab)=>{'}</span></div>
-                        <div><span className="ci comment">// lets append metadata of our crab</span></div>
-                        <div><span className="ci">crab.burn({'{'}</span></div>
-                        <div><span className="ci2">keypair: aliceKeypair</span></div>
-                        <div><span className="ci">{'}).then((burnedCrab)=>{'}</span></div>
-                        <div><span className="ci2 comment">// crab burned sent to away</span></div>
-                        <div><span className="ci2">console.log(burnedCrab.metadata)</span></div>
-                        <div><span className="ci">{'})'}</span></div>
-                        <div><span className="c">{'})'}</span></div>
-                    </code>
-                </pre>
-            </div>
-        )
+        const code = `// burn our retrieved crab
+crab.burn(
+    {
+        keypair: aliceKeypair
+    })
+    .then(burnedCrab => {
+        // crab is now tagged as "burned",
+        // the new publicKey is randomized
+        // and the corresponding privateKey "lost"
+        console.log(burnedCrab.metadata)
+    })
+`
+        return this.renderCode(code)
     }
 
     render() {
@@ -140,8 +116,8 @@ bdbOrm.crabModel
                 return this.home()
             case 'create':
                 return this.create()
-            case 'retreive':
-                return this.retreive()
+            case 'retrieve':
+                return this.retrieve()
             case 'append':
                 return this.append()
             case 'burn':
