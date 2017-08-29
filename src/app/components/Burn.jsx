@@ -10,9 +10,16 @@ import bdborm from '../initdb'
 class Burn extends TutorialStep {
     constructor(props) {
         super(props)
+        this.state = {
+            output: null,
+            error: null
+        }
         this.burnCrab = this.burnCrab.bind(this)
     }
     burnCrab() {
+        this.setState({
+            error: null,
+        })
         bdborm.crab
             .retrieve(this.state.crab.id)
             .then(crabs => {
@@ -29,7 +36,11 @@ class Burn extends TutorialStep {
                 })
                 localStorage.clear()
             })
-            .catch(error => console.error(error))
+            .catch(() => {
+                this.setState({
+                    error: 'Something went wrong!',
+                })
+            })
     }
     render() {
         return (

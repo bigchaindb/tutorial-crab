@@ -10,9 +10,16 @@ import bdborm from '../initdb'
 class Read extends TutorialStep {
     constructor(props) {
         super(props)
+        this.state = {
+            output: null,
+            error: null
+        }
         this.retrieveCrab = this.retrieveCrab.bind(this)
     }
     retrieveCrab() {
+        this.setState({
+            error: null,
+        })
         bdborm.crab
             .retrieve(this.state.crab.id)
             .then(crabs => {
@@ -20,7 +27,11 @@ class Read extends TutorialStep {
                 const crabIds = crabs.map(crab => crab.id)
                 this.setState({ output: JSON.stringify(crabIds, null, 2) })
             })
-            .catch(error => console.error(error))
+            .catch(() => {
+                this.setState({
+                    error: 'Something went wrong!',
+                })
+            })
     }
     render() {
         return (

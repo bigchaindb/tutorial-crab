@@ -10,9 +10,16 @@ import bdborm from '../initdb'
 class Append extends TutorialStep {
     constructor(props) {
         super(props)
+        this.state = {
+            output: null,
+            error: null
+        }
         this.appendCrab = this.appendCrab.bind(this)
     }
     appendCrab() {
+        this.setState({
+            error: null,
+        })
         bdborm.crab
             .retrieve(this.state.crab.id)
             .then(crabs => {
@@ -29,7 +36,11 @@ class Append extends TutorialStep {
                     output: JSON.stringify(appendedCrab.metadata, null, 2)
                 })
             })
-            .catch(error => console.error(error))
+            .catch(() => {
+                this.setState({
+                    error: 'Something went wrong!',
+                })
+            })
     }
     render() {
         return (

@@ -14,6 +14,9 @@ $code--text: $brand-main-gray-lighter;
         height: 100%;
         border: 1px solid $brand-main-green;
     }
+    pre.error {
+        border: 1px solid $brand-danger;
+    }
 }
 
 .code-example__header {
