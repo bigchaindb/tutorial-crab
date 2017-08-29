@@ -1,8 +1,10 @@
 const path = require('path')
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 const CONTENT_DIR = path.resolve(__dirname, 'src')
+const PRODUCTION = process.env.NODE_ENV === 'production'
 
 module.exports = {
     entry: './src/app/index.jsx',
@@ -29,6 +31,10 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin('public/styles.css', {
             allChunks: true
+        }),
+        new Dotenv({
+            path: PRODUCTION ? './.env' : './.env.local', // Path to .env file (this is the default)
+            safe: false // load .env.example (defaults to "false" which does not use dotenv-safe)
         })
     ],
     devServer: {

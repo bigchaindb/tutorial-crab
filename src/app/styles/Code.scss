@@ -1,19 +1,54 @@
+@import "bigchaindb/variables";
+
+$code--text: $brand-main-gray-lighter;
+
 .code-example {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.code-output {
+    margin: 45px;
+    pre {
+        overflow: auto;
+        height: 100%;
+        border: 1px solid $brand-main-green;
+    }
+    pre.error {
+        border: 1px solid $brand-danger;
+    }
+}
+
+.code-example__header {
+    text-align: left;
+    margin: 1rem 0;
+    border-bottom: 2px solid #9dabba;
+}
+
+.code-example__body {
+    padding: 1em;
+
+    pre {
+        background: $brand-main-gray;
+        overflow: auto;
+        padding: 0;
+        max-height: 400px;
+    }
 
     text-align: left;
 
     .c {
-        color: #dcdccc;
+        color: $code--text;
     }
     .ci {
-        color: #dcdccc;
+        color: $code--text;
         padding-left: 25px;
     }
     .ci2 {
-        color: #dcdccc;
+        color: $code--text;
         padding-left: 50px;
     }
     .comment {
-        color: #8fbede;
+        color: $brand-main-green;
     }
 }

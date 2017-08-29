@@ -1,27 +1,37 @@
-import * as driver from 'bigchaindb-driver' // eslint-disable-line import/no-namespace
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Code from './Code'
 import Output from './Output'
+import TutorialStep from './TutorialStep'
 
 import bdborm from '../initdb'
 
-class Read extends React.Component {
+class Read extends TutorialStep {
     constructor(props) {
         super(props)
         this.state = {
-            output: ''
+            output: null,
+            error: null
         }
-        this.retrieveCrab = this.retrieveCrab.bind(this);
+        this.retrieveCrab = this.retrieveCrab.bind(this)
     }
     retrieveCrab() {
-        bdborm.crab.retrieve()
+        this.setState({
+            error: null,
+        })
+        bdborm.crab
+            .retrieve(this.state.crab.id)
             .then(crabs => {
-                const crabIds = crabs.map(crab => { return crab.id })
+                console.log(crabs)
+                const crabIds = crabs.map(crab => crab.id)
                 this.setState({ output: JSON.stringify(crabIds, null, 2) })
             })
-            .catch(error => console.error(error))
+            .catch(() => {
+                this.setState({
+                    error: 'Something went wrong!',
+                })
+            })
     }
     render() {
         return (
@@ -33,7 +43,7 @@ class Read extends React.Component {
                 </div>
                 <div className="exampleHolder">
                     <div className="sideHolder">
-                        <Code step="retreive"/>
+                        <Code step="retrieve"/>
                         <button className="button button--primary button-block"
                             onClick={this.retrieveCrab}>
                             Execute code
@@ -42,7 +52,15 @@ class Read extends React.Component {
                     <div className="sideHolder">
                         <Output output={this.state.output}/>
                         { this.state.output ?
-                            <Link className="button button--primary button-block" to="/append">
+                            <Link
+                                className="button button--primary button-block"
+                                to={{
+                                    pathname: '/append',
+                                    state: {
+                                        crab: this.state.crab,
+                                        keypair: this.state.keypair
+                                    }
+                                }}>
                                 Next step: append
                             </Link>
                             : null }
