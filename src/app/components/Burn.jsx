@@ -10,10 +10,6 @@ import bdborm from '../initdb'
 class Burn extends TutorialStep {
     constructor(props) {
         super(props)
-        this.state = {
-            output: null,
-            error: null
-        }
         this.burnCrab = this.burnCrab.bind(this)
     }
     burnCrab() {
@@ -57,7 +53,7 @@ class Burn extends TutorialStep {
                         </button>
                     </div>
                     <div className="sideHolder">
-                        <Output output={this.state.output}/>
+                        <Output output={this.state.output} error={this.state.error}/>
                         { this.state.output ?
                             <Link className="button button--primary button-block" to="/">
                                 Back home
