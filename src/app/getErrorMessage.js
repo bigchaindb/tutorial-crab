@@ -1,9 +1,20 @@
 export default (err) => {
-    let error = 'Something went wrong!'
+    let errMessage = 'Something went wrong!'
     if (err.message) {
-        error += `\n\n${err.message}`
-    } else if (err.status) {
-        error += `\n\nstatus: ${err.status}\n${err.statusText}`
+        errMessage += `\n\n${err.message}`
     }
-    return error
+    if (err.status) {
+        errMessage += `\n\nstatus: ${err.status}\n${err.statusText}`
+    }
+    if (err.json) {
+        return err.json()
+            .then(errObject => {
+                if (errObject.message) {
+                    errMessage += `\n\n: ${errObject.message}`
+                }
+                return errMessage
+            })
+    } else {
+        return Promise.resolve(errMessage)
+    }
 }

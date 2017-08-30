@@ -9,20 +9,16 @@ h1, h2 {
     color: $brand-main-gray-light
 }
 
+h2 {
+    text-align: left;
+}
+
 .row--wide {
     max-width: 1200px;
 }
 
-.code--install {
-    background: $brand-main-green;
-    color: $brand-main-blue;
-    padding: 0.5em;
-    font-size: 0.8em;
-}
-
 .section {
     margin: 0 10%;
-    text-align: left;
     p {
         text-align: justify;
     }
@@ -52,17 +48,18 @@ h1, h2 {
         padding: 0.5em;
     }
 }
-
-.logo-xs .logo--github {
-    width: $font-size-base;
-    height: $font-size-base;
+.logo--github {
     fill: $brand-main-gray-light;
 }
 
-.logo-md .logo--github {
+.logo-xs svg {
+    width: $font-size-base;
+    height: $font-size-base;
+}
+
+.logo-md svg{
     width: 1.5*$font-size-base;
     height: 1.5*$font-size-base;
-    fill: $brand-main-gray-light;
 }
 
 .menu--main .logo--github {
@@ -70,10 +67,19 @@ h1, h2 {
     cursor: pointer;
 }
 
+.logo-circle--wrapper {
+    margin: 1em;
+}
+
+.logo--home {
+    fill: $brand-main-gray-light;
+    cursor: pointer;
+}
+
 .img-wrapper {
     text-align: center;
     position: absolute;
-    margin-top: 8em;
+    bottom: 3em;
 }
 
 .hidden {

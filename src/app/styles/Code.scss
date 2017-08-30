@@ -8,14 +8,25 @@ $code--text: $brand-main-gray-lighter;
 }
 
 .code-output {
+    position: relative;
+    text-align: left;
     margin: 45px;
     pre {
         overflow: auto;
         height: 100%;
         border: 1px solid $brand-main-green;
+
+        code {
+            white-space: pre-wrap;
+        }
     }
     pre.error {
         border: 1px solid $brand-danger;
+    }
+    a {
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
     }
 }
 
@@ -51,4 +62,12 @@ $code--text: $brand-main-gray-lighter;
     .comment {
         color: $brand-main-green;
     }
+}
+
+
+.code--highlight {
+    background: $brand-main-green;
+    color: $brand-main-blue;
+    padding: 0.5em;
+    font-size: 0.8em;
 }

@@ -40,7 +40,7 @@ const Home = () => (
                             </tr>
                             <tr>
                                 <td>
-                                    <b><u>R</u></b>ETRIEVE
+                                    <b><u>R</u></b>EAD
                                 </td>
                                 <td>
                                     <b><u>R</u></b>ETRIEVE

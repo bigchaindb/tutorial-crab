@@ -44,20 +44,21 @@ const aliceKeypair = new driver.Ed25519Keypair()
 
     create() {
         const code = `// from the defined models in our bdbOrm
-//we create a crab with Alice as owner
+// we create a crab with Alice as owner
 bdbOrm.crabModel
     .create({
         keypair: aliceKeypair,
-        metadata: { key: 'metadataValue' }
+        metadata: {
+            breed: 'coconut crab',
+            color: 'blue'
+        }
     })
     .then(crab => {
-        /*
-            crab is an object with all data & functions
-            crab.id equals the id of the asset
-            crab.metadata is latest version
-            crab.transactionList gives the full history
-        */
-        console.log(crab.id)
+        // crab is an object with all data & functions
+        // crab.id equals the id of the asset
+        // crab.metadata is latest version
+        // crab.transactionList gives the full history
+        console.log(crab)
     })
 `
         return this.renderCode(code)
@@ -70,7 +71,7 @@ bdbOrm.crabModel
     .retrieve(crab.id)
     .then(crabs => {
         // crabs is an array of crabModel
-        console.log(crabs.map(crab => crab.id))
+        console.log(crabs.map(crab => crab.metadata))
     })
 `
         return this.renderCode(code)
@@ -82,7 +83,7 @@ crab.append(
     {
         toPublicKey: aliceKeypair.publicKey,
         keypair: aliceKeypair,
-        metadata: { key: 'updatedValue' }
+        metadata: { color: 'red' }
     })
     .then(updatedCrab => {
         // updatedCrab contains the last (unspent) state
@@ -104,7 +105,8 @@ crab.burn(
         // crab is now tagged as "burned",
         // the new publicKey is randomized
         // and the corresponding privateKey "lost"
-        console.log(burnedCrab.metadata)
+        console.log(burnedCrab.transactionList.reverse()
+            .map(tx => tx.metadata))
     })
 `
         return this.renderCode(code)

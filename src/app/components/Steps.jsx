@@ -29,7 +29,7 @@ class Steps extends React.Component {
                         </NavLink>
                     </div>
                     <a href="https://github.com/bigchaindb/tutorial-crab/" target="_blank">
-                        <span className="logo-md"> <GithubLogo/></span>
+                        <span className="logo-md"><GithubLogo/></span>
                     </a>
                 </div>
             </header>
