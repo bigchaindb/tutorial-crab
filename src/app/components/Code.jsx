@@ -52,7 +52,7 @@ bdbOrm.crabModel
     })
     .then(crab => {
         /*
-            crab is an object with all our data and functions
+            crab is an object with all data & functions
             crab.id equals the id of the asset
             crab.metadata is latest version
             crab.transactionList gives the full history

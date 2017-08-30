@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 
 import Home from './Home'
+import Install from './Install'
 import Create from './Create'
 import Retrieve from './Retrieve'
 import Append from './Append'
@@ -18,6 +19,7 @@ const App = () => (
             <div className="app__content">
 
                 <Route exact path="/" component={Home}/>
+                <Route path="/install" component={Install}/>
                 <Route path="/create" component={Create}/>
                 <Route path="/retrieve" component={Retrieve}/>
                 <Route path="/append" component={Append}/>
