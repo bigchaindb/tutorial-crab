@@ -5,6 +5,7 @@ import TutorialStep from './TutorialStep'
 import Code from './Code'
 import Output from './Output'
 
+import getErrorMessage from '../getErrorMessage'
 import bdborm from '../initdb'
 
 class Burn extends TutorialStep {
@@ -14,6 +15,7 @@ class Burn extends TutorialStep {
     }
     burnCrab() {
         this.setState({
+            output: null,
             error: null,
         })
         bdborm.crab
@@ -32,9 +34,9 @@ class Burn extends TutorialStep {
                 })
                 localStorage.clear()
             })
-            .catch(() => {
+            .catch(err => {
                 this.setState({
-                    error: 'Something went wrong!',
+                    error: getErrorMessage(err)
                 })
             })
     }

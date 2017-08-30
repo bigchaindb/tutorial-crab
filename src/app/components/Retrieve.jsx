@@ -5,6 +5,7 @@ import Code from './Code'
 import Output from './Output'
 import TutorialStep from './TutorialStep'
 
+import getErrorMessage from '../getErrorMessage'
 import bdborm from '../initdb'
 
 class Read extends TutorialStep {
@@ -14,18 +15,18 @@ class Read extends TutorialStep {
     }
     retrieveCrab() {
         this.setState({
+            output: null,
             error: null,
         })
         bdborm.crab
             .retrieve(this.state.crab.id)
             .then(crabs => {
-                console.log(crabs)
                 const crabIds = crabs.map(crab => crab.id)
                 this.setState({ output: JSON.stringify(crabIds, null, 2) })
             })
-            .catch(() => {
+            .catch(err => {
                 this.setState({
-                    error: 'Something went wrong!',
+                    error: getErrorMessage(err)
                 })
             })
     }

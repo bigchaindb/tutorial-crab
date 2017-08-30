@@ -20,7 +20,7 @@ class TutorialStep extends React.Component {
         }
         this.state = {
             ...localState,
-            output: ''
+            output: null
         }
         if (!this.state.crab || !this.state.keypair) {
             this.props.history.push('/create')
