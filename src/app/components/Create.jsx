@@ -13,6 +13,7 @@ class Create extends React.Component {
         const keypair = JSON.parse(localStorage.getItem('keypair'))
         this.state = {
             output: null,
+            error: null,
             crab: null,
             keypair: keypair || new driver.Ed25519Keypair()
         }
@@ -20,6 +21,9 @@ class Create extends React.Component {
         this.createCrab = this.createCrab.bind(this)
     }
     createCrab() {
+        this.setState({
+            error: null,
+        })
         bdborm.crab
             .create({
                 keypair: this.state.keypair,
@@ -32,7 +36,11 @@ class Create extends React.Component {
                 })
                 localStorage.setItem('crabid', crab.id)
             })
-            .catch(error => console.error(error))
+            .catch(() => {
+                this.setState({
+                    error: 'Something went wrong!',
+                })
+            })
     }
     render() {
         return (
@@ -51,7 +59,7 @@ class Create extends React.Component {
                         </button>
                     </div>
                     <div className="sideHolder">
-                        <Output output={this.state.output}/>
+                        <Output output={this.state.output} error={this.state.error}/>
                         { this.state.output ?
                             <Link
                                 className="button button--primary button-block"

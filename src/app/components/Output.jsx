@@ -5,10 +5,12 @@ class Output extends React.Component {
         return (
             <header>
                 <aside className="code-example code-output">
-                    <pre>
+                    <pre className={(this.props.error ? 'error' : '')}>
                         <code>
                             {
-                                this.props.output || '> Bleep Bop... Waiting for input'
+                                this.props.output ||
+                                this.props.error ||
+                                '> Bleep Bop... Waiting for input'
                             }
                         </code>
                     </pre>

@@ -13,6 +13,9 @@ class Read extends TutorialStep {
         this.retrieveCrab = this.retrieveCrab.bind(this)
     }
     retrieveCrab() {
+        this.setState({
+            error: null,
+        })
         bdborm.crab
             .retrieve(this.state.crab.id)
             .then(crabs => {
@@ -20,7 +23,11 @@ class Read extends TutorialStep {
                 const crabIds = crabs.map(crab => crab.id)
                 this.setState({ output: JSON.stringify(crabIds, null, 2) })
             })
-            .catch(error => console.error(error))
+            .catch(() => {
+                this.setState({
+                    error: 'Something went wrong!',
+                })
+            })
     }
     render() {
         return (
@@ -39,7 +46,7 @@ class Read extends TutorialStep {
                         </button>
                     </div>
                     <div className="sideHolder">
-                        <Output output={this.state.output}/>
+                        <Output output={this.state.output} error={this.state.error}/>
                         { this.state.output ?
                             <Link
                                 className="button button--primary button-block"

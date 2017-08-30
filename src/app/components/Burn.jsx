@@ -13,6 +13,9 @@ class Burn extends TutorialStep {
         this.burnCrab = this.burnCrab.bind(this)
     }
     burnCrab() {
+        this.setState({
+            error: null,
+        })
         bdborm.crab
             .retrieve(this.state.crab.id)
             .then(crabs => {
@@ -29,7 +32,11 @@ class Burn extends TutorialStep {
                 })
                 localStorage.clear()
             })
-            .catch(error => console.error(error))
+            .catch(() => {
+                this.setState({
+                    error: 'Something went wrong!',
+                })
+            })
     }
     render() {
         return (
@@ -46,7 +53,7 @@ class Burn extends TutorialStep {
                         </button>
                     </div>
                     <div className="sideHolder">
-                        <Output output={this.state.output}/>
+                        <Output output={this.state.output} error={this.state.error}/>
                         { this.state.output ?
                             <Link className="button button--primary button-block" to="/">
                                 Back home

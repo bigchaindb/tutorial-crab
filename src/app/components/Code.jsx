@@ -43,7 +43,7 @@ const aliceKeypair = new driver.Ed25519Keypair()
     }
 
     create() {
-        const code = `// from the defined models in our bdbOrm 
+        const code = `// from the defined models in our bdbOrm
 //we create a crab with Alice as owner
 bdbOrm.crabModel
     .create({
@@ -83,7 +83,7 @@ crab.append(
         toPublicKey: aliceKeypair.publicKey,
         keypair: aliceKeypair,
         metadata: { key: 'updatedValue' }
-    })  
+    })
     .then(updatedCrab => {
         // updatedCrab contains the last (unspent) state
         // of our crab so any actions
