@@ -9,7 +9,7 @@ const PRODUCTION = process.env.NODE_ENV === 'production'
 module.exports = {
     entry: './src/app/index.jsx',
     output: {
-        publicPath: 'http://localhost:8080/',
+        publicPath: 'http://localhost:4000/',
         filename: 'public/bundle.js'
     },
     resolve: {
@@ -25,6 +25,13 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loaders: [
+                    'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+                    'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
+                ]
             }
         ]
     },

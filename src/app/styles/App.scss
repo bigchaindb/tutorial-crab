@@ -5,10 +5,77 @@ body {
     color: $brand-main-gray-light;
 }
 
-h1 {
+h1, h2 {
     color: $brand-main-gray-light
 }
 
 .row--wide {
     max-width: 1200px;
+}
+
+.code--install {
+    background: $brand-main-green;
+    color: $brand-main-blue;
+    padding: 0.5em;
+    font-size: 0.8em;
+}
+
+.section {
+    margin: 0 10%;
+    text-align: left;
+    p {
+        text-align: justify;
+    }
+}
+
+.table-tutorial__wrapper {
+    margin: 1em 0;
+}
+
+.table-tutorial {
+    margin: auto;
+    border-collapse: collapse;
+    border: 1px solid $brand-main-green;
+
+    thead {
+        font-size: 1.2em;
+        color: $brand-main-green;
+        border-bottom: 1px solid;
+    }
+
+    tr:first-child td {
+      border-right: 1px solid $brand-main-green;
+    }
+
+    td {
+        border-right: 1px solid $brand-main-green;
+        padding: 0.5em;
+    }
+}
+
+.logo-xs .logo--github {
+    width: $font-size-base;
+    height: $font-size-base;
+    fill: $brand-main-gray-light;
+}
+
+.logo-md .logo--github {
+    width: 1.5*$font-size-base;
+    height: 1.5*$font-size-base;
+    fill: $brand-main-gray-light;
+}
+
+.menu--main .logo--github {
+    fill: $brand-main-gray;
+    cursor: pointer;
+}
+
+.img-wrapper {
+    text-align: center;
+    position: absolute;
+    margin-top: 8em;
+}
+
+.hidden {
+    display: none;
 }

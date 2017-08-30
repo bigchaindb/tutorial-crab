@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Code from './Code'
 import Output from './Output'
 
+import getErrorMessage from '../getErrorMessage'
 import bdborm from '../initdb'
 
 class Create extends React.Component {
@@ -22,6 +23,7 @@ class Create extends React.Component {
     }
     createCrab() {
         this.setState({
+            output: null,
             error: null,
         })
         bdborm.crab
@@ -29,16 +31,16 @@ class Create extends React.Component {
                 keypair: this.state.keypair,
                 metadata: { meta: 'toMeta4You' }
             })
-            .then((crab) => {
+            .then(crab => {
                 this.setState({
                     output: JSON.stringify(crab.id, null, 2),
                     crab
                 })
                 localStorage.setItem('crabid', crab.id)
             })
-            .catch(() => {
+            .catch(err => {
                 this.setState({
-                    error: 'Something went wrong!',
+                    error: getErrorMessage(err)
                 })
             })
     }
