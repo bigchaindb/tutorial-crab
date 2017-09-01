@@ -51,7 +51,7 @@ docker-compose ps
             Name                          Command               State                        Ports                       
 ------------------------------------------------------------------------------------------------------------------------
 mybigchaindbproject_bdb_1      bigchaindb start                 Up      0.0.0.0:49984->9984/tcp, 0.0.0.0:49985->9985/tcp
-mybigchaindbproject_client_1   npm start                        Up      0.0.0.0:4000->4000/tcp   
+mybigchaindbproject_client_1   npm run serve                    Up      0.0.0.0:4000->4000/tcp   
 mybigchaindbproject_mdb_1      docker-entrypoint.sh mongo ...   Up      0.0.0.0:32797->27017/tcp                        
 ```
 

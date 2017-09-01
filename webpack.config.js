@@ -9,7 +9,7 @@ const PRODUCTION = process.env.NODE_ENV === 'production'
 module.exports = {
     entry: './src/app/index.jsx',
     output: {
-        publicPath: 'http://localhost:4000/',
+        publicPath: 'http://0.0.0.0:4000/',
         filename: 'public/bundle.js'
     },
     resolve: {

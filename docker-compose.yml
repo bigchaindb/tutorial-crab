@@ -33,4 +33,4 @@ services:
       - ./package.json:/usr/src/app/package.json
     ports:
       - "4000:4000"
-    command: npm start
+    command: npm run serve
