@@ -1,4 +1,4 @@
-@import "bigchaindb/variables";
+@import 'bigchaindb/variables';
 
 $code--text: $brand-main-gray-lighter;
 
@@ -11,6 +11,7 @@ $code--text: $brand-main-gray-lighter;
     position: relative;
     text-align: left;
     margin: 45px;
+
     pre {
         overflow: auto;
         height: 100%;
@@ -20,9 +21,11 @@ $code--text: $brand-main-gray-lighter;
             white-space: pre-wrap;
         }
     }
-    pre.error {
+
+    .error {
         border: 1px solid $brand-danger;
     }
+
     a {
         position: absolute;
         bottom: 0;
@@ -38,6 +41,7 @@ $code--text: $brand-main-gray-lighter;
 
 .code-example__body {
     padding: 1em;
+    text-align: left;
 
     pre {
         background: $brand-main-gray;
@@ -46,19 +50,20 @@ $code--text: $brand-main-gray-lighter;
         max-height: 400px;
     }
 
-    text-align: left;
-
     .c {
         color: $code--text;
     }
+
     .ci {
         color: $code--text;
         padding-left: 25px;
     }
+
     .ci2 {
         color: $code--text;
         padding-left: 50px;
     }
+
     .comment {
         color: $brand-main-green;
     }
@@ -68,6 +73,6 @@ $code--text: $brand-main-gray-lighter;
 .code--highlight {
     background: $brand-main-green;
     color: $brand-main-blue;
-    padding: 0.5em;
-    font-size: 0.8em;
+    padding: .5em;
+    font-size: .8em;
 }

@@ -10,21 +10,23 @@
     width: 140px;
     height: 25px;
     position: absolute;
-    top: 16px
+    top: 16px;
 }
-.menu .menu__links {
-    padding-left: 25px;
-    color: $brand-main-gray;
-}
+
 .menu .active.menu__links {
     .label {
         border-bottom: 2px solid $brand-main-gray;
     }
+
     .number {
-        color: white;
+        color: $ascribe-white;
     }
 }
+
 .menu .menu__links {
+    padding-left: 25px;
+    color: $brand-main-gray;
+
     .number {
         text-align: center;
         display: inline-block;
@@ -38,6 +40,4 @@
         font-weight: 600;
         line-height: 1rem;
     }
-
 }
-

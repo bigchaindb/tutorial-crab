@@ -1,12 +1,13 @@
-@import "./bigchaindb/variables";
+@import './bigchaindb/variables';
 
 body {
     background: $brand-main-gray;
     color: $brand-main-gray-light;
 }
 
-h1, h2 {
-    color: $brand-main-gray-light
+h1,
+h2 {
+    color: $brand-main-gray-light;
 }
 
 h2 {
@@ -19,6 +20,7 @@ h2 {
 
 .section {
     margin: 0 10%;
+
     p {
         text-align: justify;
     }
@@ -40,14 +42,15 @@ h2 {
     }
 
     tr:first-child td {
-      border-right: 1px solid $brand-main-green;
+        border-right: 1px solid $brand-main-green;
     }
 
     td {
         border-right: 1px solid $brand-main-green;
-        padding: 0.5em;
+        padding: .5em;
     }
 }
+
 .logo--github {
     fill: $brand-main-gray-light;
 }
@@ -57,9 +60,9 @@ h2 {
     height: $font-size-base;
 }
 
-.logo-md svg{
-    width: 1.5*$font-size-base;
-    height: 1.5*$font-size-base;
+.logo-md svg {
+    width: 1.5 * $font-size-base;
+    height: 1.5 * $font-size-base;
 }
 
 .menu--main .logo--github {
