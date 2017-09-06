@@ -7,9 +7,10 @@ const CONTENT_DIR = path.resolve(__dirname, 'src')
 const PRODUCTION = process.env.NODE_ENV === 'production'
 
 module.exports = {
-    entry: './src/app/index.jsx',
+    context: CONTENT_DIR,
+    entry: './app/index.jsx',
     output: {
-        publicPath: 'http://0.0.0.0:4000/',
+        publicPath: '/crab/',
         filename: 'public/bundle.js'
     },
     resolve: {
@@ -29,7 +30,7 @@ module.exports = {
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loaders: [
-                    'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+                    'file-loader?hash=sha512&digest=hex&name=public/img/[hash].[ext]',
                     'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
                 ]
             }
@@ -46,7 +47,6 @@ module.exports = {
     ],
     devServer: {
         contentBase: CONTENT_DIR,
-        open: true,
         inline: true,
         port: 4000,
         historyApiFallback: {

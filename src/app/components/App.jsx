@@ -12,7 +12,7 @@ import Burn from './Burn'
 import Steps from './Steps'
 
 const App = () => (
-    <Router onUpdate={() => window.scrollTo(0, 0)}>
+    <Router onUpdate={() => window.scrollTo(0, 0)} basename={'/crab'}>
         <div>
 
             <Steps/>

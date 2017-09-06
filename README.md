@@ -60,7 +60,7 @@ and the external one is `49984`.
 
 The external ports might change, so for the following use the ports as indicated by `docker-compose ps`.
 
-You can simply check if it's running by going to [`http://localhost:4000`](http://localhost:4000).
+You can simply check if it's running by going to [`http://localhost:4000/crab`](http://localhost:4000/crab).
 
 If you already built the images and want to `restart`:
 

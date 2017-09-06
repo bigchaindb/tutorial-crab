@@ -21,7 +21,7 @@ class Read extends TutorialStep {
         bdborm.crab
             .retrieve(this.state.crab.id)
             .then(crabs => {
-                const crabIds = crabs.map(crab => crab.metadata)
+                const crabIds = crabs.map(crab => crab.data)
                 this.setState({ output: JSON.stringify(crabIds, null, 2) })
             })
             .catch(err => {

@@ -12,9 +12,9 @@ const Home = () => (
                 <section className="section">
                     <h2>Introduction</h2>
                     <p>
-                        This tutorial will illustrate how BigchainDB is used
+                        This tutorial illustrates how BigchainDB is used
                         as a database that is accessible from the browser.
-                        The basic operations that we will cover are much like
+                        The basic operations covered are much like
                         your standard database operations, but with a blockchain tweak:
                     </p>
                     <p>

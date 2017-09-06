@@ -26,13 +26,13 @@ class Append extends TutorialStep {
                     return crabs[0].append({
                         toPublicKey: this.state.keypair.publicKey,
                         keypair: this.state.keypair,
-                        metadata: { color: 'red' }
+                        data: { color: 'red' }
                     })
                 }
             })
             .then((appendedCrab) => {
                 this.setState({
-                    output: JSON.stringify(appendedCrab.metadata, null, 2)
+                    output: JSON.stringify(appendedCrab.data, null, 2)
                 })
             })
             .catch(err => {
@@ -51,11 +51,11 @@ class Append extends TutorialStep {
                         <section className="section">
                             <h2>Append/Update</h2>
                             <p>
-                                Since blockchains do not allow to tamper with the past,
+                                Since blockchains do not allow tampering with the past data,
                                 it is not possible to update an existing value by overwriting it.
                                 The way to go is to <code>.append(update)</code> the update to the asset.
                                 This will trigger a <code>TRANSFER</code> transaction with the update attached as
-                                metadata. For a simple update without ownership change, you can simply
+                                data. For a simple update without ownership change, you can simply
                                 use your own public key in <code>toPublicKey</code>.
                             </p>
                             <p>

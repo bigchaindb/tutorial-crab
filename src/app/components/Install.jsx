@@ -13,20 +13,20 @@ const Install = () => (
                     <p>
                         First things first, we need to set you up.
                         The <a href="https://github.com/bigchaindb/js-driver-orm" target="_blank">BigchainDB-ORM</a> module
-                        we're going to is supported for node (version >= 6) as well as the browser.
+                        we're going to is supported for NodeJS (version >= 6) as well as the browser.
                         You can simply install the ORM using:
                     </p>
                     <div style={{ marginBottom: '1em' }}>
                         <code className="code--highlight">npm install bigchaindb-orm</code>
                     </div>
                     <p>
-                        Next we need to import the ORM module and connect to a BigchainDB node.
+                        Next, we need to import the ORM module and connect to a BigchainDB node.
                         In the example given below, we connect to
                         the <a href="https://test.ipdb.io/" target="_blank">IPDB testnet</a>.
                     </p>
                     <p>
-                        Finally we need to define our model with a <code>schema</code> that
-                        will be used for each instance of the model. In BigchainDB terms this means
+                        Finally, we need to define our model with a <code>schema</code> that
+                        will be used for each instance of the model. In BigchainDB terms, this means
                         that each instance of that model is an asset.
                         The schema URI is set in the <code>asset</code> field
                         of the <code>CREATE</code> transaction.

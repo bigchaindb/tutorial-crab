@@ -34,7 +34,10 @@ const bdbOrm = new Orm(
         app_key: "Same as app_id"
     }
 )
-// define our models and assets
+// define(<model name>,<additional information>)
+// <model name>: represents the name of model you want to store
+// <additional inf.>: any information you want to pass about the model (can be string or object)
+// note: cannot be changed once set!
 bdbOrm.define("crabModel", "https://schema.org/v1/crab")
 // create a public and private key for Alice
 const aliceKeypair = new driver.Ed25519Keypair()
@@ -48,7 +51,7 @@ const aliceKeypair = new driver.Ed25519Keypair()
 bdbOrm.crabModel
     .create({
         keypair: aliceKeypair,
-        metadata: {
+        data: {
             breed: 'coconut crab',
             color: 'blue'
         }
@@ -56,8 +59,8 @@ bdbOrm.crabModel
     .then(crab => {
         // crab is an object with all data & functions
         // crab.id equals the id of the asset
-        // crab.metadata is latest version
-        // crab.transactionList gives the full history
+        // crab.data is latest version
+        // crab.txHistory gives the full history
         console.log(crab)
     })
 `
@@ -71,7 +74,7 @@ bdbOrm.crabModel
     .retrieve(crab.id)
     .then(crabs => {
         // crabs is an array of crabModel
-        console.log(crabs.map(crab => crab.metadata))
+        console.log(crabs.map(crab => crab.data))
     })
 `
         return this.renderCode(code)
@@ -83,13 +86,13 @@ crab.append(
     {
         toPublicKey: aliceKeypair.publicKey,
         keypair: aliceKeypair,
-        metadata: { color: 'red' }
+        data: { color: 'red' }
     })
     .then(updatedCrab => {
         // updatedCrab contains the last (unspent) state
         // of our crab so any actions
         // need to be done to updatedCrab
-        console.log(updatedCrab.metadata)
+        console.log(updatedCrab.data)
     })
 `
         return this.renderCode(code)
@@ -105,8 +108,8 @@ crab.burn(
         // crab is now tagged as "burned",
         // the new publicKey is randomized
         // and the corresponding privateKey "lost"
-        console.log(burnedCrab.transactionList.reverse()
-            .map(tx => tx.metadata))
+        console.log(burnedCrab.txHistory.reverse()
+            .map(tx => tx.data))
     })
 `
         return this.renderCode(code)

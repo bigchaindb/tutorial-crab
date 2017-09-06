@@ -29,7 +29,7 @@ class Create extends React.Component {
         bdborm.crab
             .create({
                 keypair: this.state.keypair,
-                metadata: {
+                data: {
                     breed: 'coconut crab',
                     color: 'blue'
                 }
@@ -57,9 +57,9 @@ class Create extends React.Component {
                         <section className="section">
                             <h2>Create</h2>
                             <p>
-                                Say you'd want to create an <code>asset</code> of <code>crabModel</code>,
-                                simply invoke the <code>.create()</code> function your model. You can add
-                                some specific <code>metadata</code> related to the instance you created.
+                                Say you wanted to create an <code>asset</code> of <code>crabModel</code>,
+                                simply invoke the <code>.create()</code> function for your model. You can add
+                                some specific <code>data</code> related to the instance you created.
                                 This could be useful to track the state or any attribute of your asset.
                                 Of course, you will also need to provide the keypair for signing the transaction.
                             </p>
