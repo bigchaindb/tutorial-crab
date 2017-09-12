@@ -8,6 +8,8 @@ import Output from './Output'
 import getErrorMessage from '../getErrorMessage'
 import bdborm from '../initdb'
 
+import Loading from '../img/loading.gif'
+
 class Create extends React.Component {
     constructor(props) {
         super(props)
@@ -22,7 +24,11 @@ class Create extends React.Component {
         this.createCrab = this.createCrab.bind(this)
     }
     createCrab() {
+        if (this.state.loading === true) {
+            return
+        }
         this.setState({
+            loading: true,
             output: null,
             error: null,
         })
@@ -37,14 +43,16 @@ class Create extends React.Component {
             .then(crab => {
                 this.setState({
                     output: JSON.stringify(crab, null, 2),
-                    crab
+                    crab,
+                    loading: false
                 })
                 localStorage.setItem('crabid', crab.id)
             })
             .catch(err => {
                 getErrorMessage(err).then((errMessage) => {
                     this.setState({
-                        error: errMessage
+                        error: errMessage,
+                        loading: false
                     })
                 })
             })
@@ -76,7 +84,9 @@ class Create extends React.Component {
                             <Code step="create"/>
                             <button className="button button--primary button-block"
                                 onClick={this.createCrab}>
-                                Execute code
+                                { this.state.loading ?
+                                    <img src={Loading} height="30"/> : 'Execute code'
+                                }
                             </button>
                         </div>
                         <div className="sideHolder">

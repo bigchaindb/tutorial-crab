@@ -12,6 +12,9 @@ class Steps extends React.Component {
                         <Logo/>
                     </NavLink>
                     <div className="row row--wide">
+                        <NavLink className="menu__links" activeClassName="active" exact to="/">
+                            <span className="number">-1</span> <span className="label">Start</span>
+                        </NavLink>
                         <NavLink className="menu__links" activeClassName="active" to="/install">
                             <span className="number">0</span> <span className="label">Install</span>
                         </NavLink>

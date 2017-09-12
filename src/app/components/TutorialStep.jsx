@@ -5,6 +5,7 @@ class TutorialStep extends React.Component {
     constructor(props) {
         super(props)
         let localState = {
+            loading: false,
             crab: null,
             keypair: null,
         }

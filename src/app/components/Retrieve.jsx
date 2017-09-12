@@ -8,13 +8,19 @@ import TutorialStep from './TutorialStep'
 import getErrorMessage from '../getErrorMessage'
 import bdborm from '../initdb'
 
+import Loading from '../img/loading.gif'
+
 class Read extends TutorialStep {
     constructor(props) {
         super(props)
         this.retrieveCrab = this.retrieveCrab.bind(this)
     }
     retrieveCrab() {
+        if (this.state.loading === true) {
+            return
+        }
         this.setState({
+            loading: true,
             output: null,
             error: null,
         })
@@ -22,12 +28,16 @@ class Read extends TutorialStep {
             .retrieve(this.state.crab.id)
             .then(crabs => {
                 const crabIds = crabs.map(crab => crab.data)
-                this.setState({ output: JSON.stringify(crabIds, null, 2) })
+                this.setState({
+                    output: JSON.stringify(crabIds, null, 2),
+                    loading: false,
+                })
             })
             .catch(err => {
                 getErrorMessage(err).then((errMessage) => {
                     this.setState({
-                        error: errMessage
+                        error: errMessage,
+                        loading: false,
                     })
                 })
             })
@@ -54,7 +64,9 @@ class Read extends TutorialStep {
                             <Code step="retrieve"/>
                             <button className="button button--primary button-block"
                                 onClick={this.retrieveCrab}>
-                                Execute code
+                                { this.state.loading ?
+                                    <img src={Loading} height="30"/> : 'Execute code'
+                                }
                             </button>
                         </div>
                         <div className="sideHolder">

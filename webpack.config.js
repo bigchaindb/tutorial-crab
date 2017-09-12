@@ -4,11 +4,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
 const CONTENT_DIR = path.resolve(__dirname, 'src')
+const BASE_DIR = path.resolve(__dirname)
 const PRODUCTION = process.env.NODE_ENV === 'production'
 
 module.exports = {
-    context: CONTENT_DIR,
-    entry: './app/index.jsx',
+    entry: './src/app/index.jsx',
     output: {
         publicPath: '/crab/',
         filename: 'public/bundle.js'
@@ -46,7 +46,7 @@ module.exports = {
         })
     ],
     devServer: {
-        contentBase: CONTENT_DIR,
+        contentBase: [CONTENT_DIR,BASE_DIR],
         inline: true,
         port: 4000,
         historyApiFallback: {

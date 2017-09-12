@@ -8,13 +8,19 @@ import Output from './Output'
 import getErrorMessage from '../getErrorMessage'
 import bdborm from '../initdb'
 
+import Loading from '../img/loading.gif'
+
 class Append extends TutorialStep {
     constructor(props) {
         super(props)
         this.appendCrab = this.appendCrab.bind(this)
     }
     appendCrab() {
+        if (this.state.loading === true) {
+            return
+        }
         this.setState({
+            loading: true,
             output: null,
             error: null,
         })
@@ -32,12 +38,14 @@ class Append extends TutorialStep {
             })
             .then((appendedCrab) => {
                 this.setState({
+                    loading: false,
                     output: JSON.stringify(appendedCrab.data, null, 2)
                 })
             })
             .catch(err => {
                 getErrorMessage(err).then((errMessage) => {
                     this.setState({
+                        loading: false,
                         error: errMessage
                     })
                 })
@@ -69,7 +77,9 @@ class Append extends TutorialStep {
                             <Code step="append"/>
                             <button className="button button--primary button-block"
                                 onClick={this.appendCrab}>
-                                Execute code
+                                { this.state.loading ?
+                                    <img src={Loading} height="30"/> : 'Execute code'
+                                }
                             </button>
                         </div>
                         <div className="sideHolder">

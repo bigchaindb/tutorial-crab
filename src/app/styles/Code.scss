@@ -71,8 +71,9 @@ $code--text: $brand-main-gray-lighter;
 
 
 .code--highlight {
-    background: $brand-main-green;
-    color: $brand-main-blue;
+    background: $gray-dark;
+    color: $ascribe-white;
     padding: .5em;
     font-size: .8em;
+    border: 1px solid $brand-main-green;
 }
