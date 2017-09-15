@@ -7,7 +7,7 @@
     "watch": "webpack -d --watch",
     "build": "webpack -p",
     "production": "NODE_ENV=production webpack -p",
-    "serve": "webpack-dev-server --inline --host 0.0.0.0"
+    "serve": "webpack -p && webpack-dev-server --inline --host 0.0.0.0"
   },
   "author": "",
   "license": "ISC",

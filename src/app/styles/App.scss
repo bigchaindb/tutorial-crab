@@ -1,8 +1,13 @@
 @import './bigchaindb/variables';
 
+html, body, .app, .app > div, .app > div > div, .app__content {
+    margin: 0px !important;
+}
+
 body {
     background: $brand-main-gray;
     color: $brand-main-gray-light;
+    position: relative;
 }
 
 h1,
@@ -12,6 +17,10 @@ h2 {
 
 h2 {
     text-align: left;
+}
+
+.app__content {
+    padding-bottom: 150px;
 }
 
 .row--wide {
@@ -90,4 +99,16 @@ h2 {
 
 .hidden {
     display: none;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    border-top: 1px solid #445261;
+    background-color: #394552;
+    color: #9dabba;
+    text-align: center;
 }

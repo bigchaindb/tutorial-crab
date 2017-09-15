@@ -2,6 +2,8 @@
 
 .menu {
     background: $brand-main-gray-light;
+    padding-left: 5px;
+    padding-right: 10px;
 }
 
 .menu .menu-logo {
@@ -24,8 +26,9 @@
 }
 
 .menu .menu__links {
-    padding-left: 25px;
     color: $brand-main-gray;
+    padding: 0px 10px 0px 5px;
+    display: inline-block;
 
     .number {
         text-align: center;
@@ -39,5 +42,14 @@
         color: #9dabba;
         font-weight: 600;
         line-height: 1rem;
+    }
+}
+
+.menu .menu__links.checked {
+    color: #388250;
+
+    .number {
+        background-color: #388250;
+        color: #fff;
     }
 }
