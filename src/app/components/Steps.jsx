@@ -44,9 +44,6 @@ class Steps extends React.Component {
 }
 
 function menuChecked(position) {
-    console.log(position)
-    console.log(window.location.pathname)
-
     switch (window.location.pathname) {
         case '/crab/':
             if (position >= 0) return false
@@ -64,7 +61,7 @@ function menuChecked(position) {
             if (position >= 4) return false
             return true
         default:
-            // none
+            return true
     }
 }
 
