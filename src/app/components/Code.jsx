@@ -60,7 +60,7 @@ bdbOrm.crabModel
         // crab is an object with all data & functions
         // crab.id equals the id of the asset
         // crab.data is latest version
-        // crab.txHistory gives the full history
+        // crab.transactionHistory gives the full history
         console.log(crab)
     })
 `
@@ -108,7 +108,7 @@ crab.burn(
         // crab is now tagged as "burned",
         // the new publicKey is randomized
         // and the corresponding privateKey "lost"
-        console.log(burnedCrab.txHistory.reverse()
+        console.log(burnedCrab.transactionHistory.reverse()
             .map(tx => tx.data))
     })
 `
