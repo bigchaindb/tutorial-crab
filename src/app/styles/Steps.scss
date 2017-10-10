@@ -2,6 +2,8 @@
 
 .menu {
     background: $brand-main-gray-light;
+    padding-left: 5px;
+    padding-right: 10px;
 }
 
 .menu .menu-logo {
@@ -10,21 +12,24 @@
     width: 140px;
     height: 25px;
     position: absolute;
-    top: 16px
+    top: 16px;
 }
-.menu .menu__links {
-    padding-left: 25px;
-    color: $brand-main-gray;
-}
+
 .menu .active.menu__links {
     .label {
         border-bottom: 2px solid $brand-main-gray;
     }
+
     .number {
-        color: white;
+        color: $ascribe-white;
     }
 }
+
 .menu .menu__links {
+    color: $brand-main-gray;
+    padding: 0px 10px 0px 5px;
+    display: inline-block;
+
     .number {
         text-align: center;
         display: inline-block;
@@ -38,6 +43,13 @@
         font-weight: 600;
         line-height: 1rem;
     }
-
 }
 
+.menu .menu__links.checked {
+    color: #388250;
+
+    .number {
+        background-color: #388250;
+        color: #fff;
+    }
+}

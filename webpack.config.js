@@ -4,12 +4,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
 const CONTENT_DIR = path.resolve(__dirname, 'src')
+const BASE_DIR = path.resolve(__dirname)
 const PRODUCTION = process.env.NODE_ENV === 'production'
 
 module.exports = {
     entry: './src/app/index.jsx',
     output: {
-        publicPath: 'http://localhost:4000/',
+        publicPath: '/crab/',
         filename: 'public/bundle.js'
     },
     resolve: {
@@ -29,7 +30,7 @@ module.exports = {
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loaders: [
-                    'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+                    'file-loader?hash=sha512&digest=hex&name=public/img/[hash].[ext]',
                     'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
                 ]
             }
@@ -45,8 +46,7 @@ module.exports = {
         })
     ],
     devServer: {
-        contentBase: CONTENT_DIR,
-        open: true,
+        contentBase: [CONTENT_DIR,BASE_DIR],
         inline: true,
         port: 4000,
         historyApiFallback: {

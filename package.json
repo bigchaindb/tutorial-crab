@@ -6,14 +6,15 @@
   "scripts": {
     "watch": "webpack -d --watch",
     "build": "webpack -p",
-    "serve": "webpack-dev-server --inline"
+    "production": "NODE_ENV=production webpack -p",
+    "serve": "webpack -p && webpack-dev-server --inline --host 0.0.0.0"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "babel-plugin-react-css-modules": "^3.1.0",
     "bigchaindb-driver": "^0.3.0",
-    "bigchaindb-orm": "0.1.5",
+    "bigchaindb-orm": "^0.1.6",
     "bip39": "^2.3.1",
     "classnames": "^2.2.5",
     "dotenv-webpack": "^1.5.4",
@@ -39,6 +40,8 @@
     "jsx": "^0.9.89",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
+    "stylelint-config-bigchaindb": "^1.1.3",
+    "stylelint-config-standard": "^17.0.0",
     "webpack": "^3.5.2",
     "webpack-dev-server": "^2.7.1"
   }
