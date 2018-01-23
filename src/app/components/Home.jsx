@@ -102,7 +102,7 @@ const Home = () => (
                     <p>
                         Next, we need to import the ORM module and connect to a BigchainDB node.
                         In the example given below, we connect to
-                        the <a href="https://ipdb.io/" target="_blank">IPDB</a> network where we already created account and received credentials.
+                        the <a href="https://test.bigchaindb.com/" target="_blank">BigchainDB Test</a> network where we already created account and received credentials.
                     </p>
                     <p>
                         Finally, we need to define our model with a <code>schema</code> that

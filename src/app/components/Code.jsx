@@ -28,10 +28,10 @@ class Code extends React.Component {
 import Orm from 'bigchaindb-orm'
 // connect to BigchainDB
 const bdbOrm = new Orm(
-    "https://test.ipdb.io/api/v1/",
+    "https://test.bigchaindb.com/api/v1/",
     {
-        app_id: "Get one from developers.ipdb.io",
-        app_key: "Same as app_id"
+        app_id: "Get one from testnet.bigchaindb.com",
+        app_key: "Get one from testnet.bigchaindb.com"
     }
 )
 // define(<model name>,<additional information>)
