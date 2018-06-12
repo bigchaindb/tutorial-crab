@@ -32,7 +32,7 @@ class Create extends React.Component {
             output: null,
             error: null,
         })
-        bdborm.crab
+        bdborm.models.crab
             .create({
                 keypair: this.state.keypair,
                 data: {

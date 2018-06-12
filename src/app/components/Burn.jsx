@@ -24,7 +24,7 @@ class Burn extends TutorialStep {
             output: null,
             error: null,
         })
-        bdborm.crab
+        bdborm.models.crab
             .retrieve(this.state.crab.id)
             .then(crabs => {
                 if (crabs.length) {

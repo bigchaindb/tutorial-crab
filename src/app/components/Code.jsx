@@ -48,7 +48,7 @@ const aliceKeypair = new driver.Ed25519Keypair()
     create() {
         const code = `// from the defined models in our bdbOrm
 // we create a crab with Alice as owner
-bdbOrm.crabModel
+bdbOrm.models.crabModel
     .create({
         keypair: aliceKeypair,
         data: {
@@ -70,7 +70,7 @@ bdbOrm.crabModel
     retrieve() {
         const code = `// get all crabs with retrieve()
 // or get a specific crab with retrieve(crab.id)
-bdbOrm.crabModel
+bdbOrm.models.crabModel
     .retrieve(crab.id)
     .then(crabs => {
         // crabs is an array of crabModel
