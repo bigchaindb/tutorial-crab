@@ -1,8 +1,7 @@
 import React from 'react'
 
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { zenburn } from 'react-syntax-highlighter/dist/styles'
-
+import { zenburn } from 'react-syntax-highlighter/styles/hljs'
 
 class Code extends React.Component {
     renderCode(code) {
