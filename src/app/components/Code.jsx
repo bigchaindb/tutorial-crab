@@ -39,7 +39,7 @@ const bdbOrm = new Orm(
 // note: cannot be changed once set!
 bdbOrm.define("crabModel", "https://schema.org/v1/crab")
 // create a public and private key for Alice
-const aliceKeypair = new driver.Ed25519Keypair()
+const aliceKeypair = new bdbOrm.driver.Ed25519Keypair()
 `
         return this.renderCode(code)
     }
