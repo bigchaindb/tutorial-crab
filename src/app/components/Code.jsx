@@ -1,8 +1,7 @@
 import React from 'react'
 
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { zenburn } from 'react-syntax-highlighter/dist/styles'
-
+import { zenburn } from 'react-syntax-highlighter/styles/hljs'
 
 class Code extends React.Component {
     renderCode(code) {
@@ -40,7 +39,7 @@ const bdbOrm = new Orm(
 // note: cannot be changed once set!
 bdbOrm.define("crabModel", "https://schema.org/v1/crab")
 // create a public and private key for Alice
-const aliceKeypair = new driver.Ed25519Keypair()
+const aliceKeypair = new bdbOrm.driver.Ed25519Keypair()
 `
         return this.renderCode(code)
     }
@@ -48,7 +47,7 @@ const aliceKeypair = new driver.Ed25519Keypair()
     create() {
         const code = `// from the defined models in our bdbOrm
 // we create a crab with Alice as owner
-bdbOrm.crabModel
+bdbOrm.models.crabModel
     .create({
         keypair: aliceKeypair,
         data: {
@@ -70,7 +69,7 @@ bdbOrm.crabModel
     retrieve() {
         const code = `// get all crabs with retrieve()
 // or get a specific crab with retrieve(crab.id)
-bdbOrm.crabModel
+bdbOrm.models.crabModel
     .retrieve(crab.id)
     .then(crabs => {
         // crabs is an array of crabModel

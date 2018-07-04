@@ -1,6 +1,6 @@
 const path = require('path')
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require('dotenv-webpack')
 
 const CONTENT_DIR = path.resolve(__dirname, 'src')
@@ -17,28 +17,35 @@ module.exports = {
         extensions: ['.js', '.jsx', '.scss', '.css']
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.jsx?$/,
-                loaders: ['babel-loader'],
-                exclude: /node_modules/
+              test: /\.(js|jsx)$/,
+              exclude: /node_modules/,
+              use: {
+                loader: "babel-loader"
+              }
             },
             {
-                test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+              test: /\.scss$/,
+              use: [
+                  MiniCssExtractPlugin.loader,
+                  { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
+                  { loader: 'sass-loader', options: { sourceMap: true } },
+              ]
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loaders: [
                     'file-loader?hash=sha512&digest=hex&name=public/img/[hash].[ext]',
-                    'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
+                    'image-webpack-loader?bypassOnDebug'
                 ]
             }
         ]
     },
     plugins: [
-        new ExtractTextPlugin('public/styles.css', {
-            allChunks: true
+        new MiniCssExtractPlugin({
+          filename: "public/styles.css",
+          chunkFilename: "[id].css"
         }),
         new Dotenv({
             path: PRODUCTION ? './.env' : './.env.local', // Path to .env file (this is the default)
@@ -52,5 +59,5 @@ module.exports = {
         historyApiFallback: {
             index: 'index.html'
         }
-    }
+    },
 }

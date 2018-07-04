@@ -1,4 +1,3 @@
-import * as driver from 'bigchaindb-driver' // eslint-disable-line import/no-namespace
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -18,7 +17,7 @@ class Create extends React.Component {
             output: null,
             error: null,
             crab: null,
-            keypair: keypair || new driver.Ed25519Keypair()
+            keypair: keypair || new bdborm.driver.Ed25519Keypair()
         }
         localStorage.setItem('keypair', JSON.stringify(this.state.keypair))
         this.createCrab = this.createCrab.bind(this)
@@ -32,7 +31,7 @@ class Create extends React.Component {
             output: null,
             error: null,
         })
-        bdborm.crab
+        bdborm.models.crab
             .create({
                 keypair: this.state.keypair,
                 data: {

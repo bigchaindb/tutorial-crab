@@ -24,7 +24,7 @@ class Read extends TutorialStep {
             output: null,
             error: null,
         })
-        bdborm.crab
+        bdborm.models.crab
             .retrieve(this.state.crab.id)
             .then(crabs => {
                 const crabIds = crabs.map(crab => crab.data)
