@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack -d --watch",
+    "start": "webpack --mode development",
     "build": "webpack --mode production",
     "production": "NODE_ENV=production webpack --mode production",
-    "serve": "webpack --mode production && webpack-dev-server --inline --host 0.0.0.0"
+    "serve": "webpack-dev-server --host 0.0.0.0"
   },
   "author": "",
   "license": "ISC",
@@ -39,6 +39,7 @@
     "stylelint-config-standard": "^17.0.0",
     "webpack": "^4.14.0",
     "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "html-webpack-plugin": "^3.2.0"
   }
 }

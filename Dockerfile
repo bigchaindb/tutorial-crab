@@ -1,21 +1,21 @@
-FROM node:6.7
+FROM ubuntu:18.04
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN apt-get update
+RUN apt-get install -y curl build-essential nginx libpng-dev
 
-COPY . /usr/src/app
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash
+RUN apt-get install -y nodejs
 
-# Adds fs-extra to npm and replaces the fs.rename method with the fs.extra
-# move method that now automatic chooses what to do (rename/move).
-# See https://github.com/npm/npm/issues/9863.
-RUN cd $(npm root -g)/npm \
- && npm install fs-extra \
- && sed -i -e s/graceful-fs/fs-extra/ -e s/fs\.rename/fs\.move/ ./lib/utils/rename.js
+WORKDIR /app
 
-RUN npm install -g yarn
+COPY . .
 
-# On some platforms, the .dockerignore file is being ignored in some versions of docker-compose
-# See https://github.com/docker/compose/issues/1607.
-RUN rm -rf node_modules
+RUN npm install
 
-RUN yarn
+RUN npm run production
+
+ADD ./nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

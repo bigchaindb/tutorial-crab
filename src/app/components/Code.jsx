@@ -1,7 +1,10 @@
 import React from 'react'
 
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { zenburn } from 'react-syntax-highlighter/styles/hljs'
+import SyntaxHighlighter, { registerLanguage } from "react-syntax-highlighter/light";
+import js from 'react-syntax-highlighter/languages/hljs/javascript';
+import zenburn from 'react-syntax-highlighter/styles/hljs/zenburn';
+
+registerLanguage('javascript', js);
 
 class Code extends React.Component {
     renderCode(code) {

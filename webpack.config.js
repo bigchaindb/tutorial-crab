@@ -2,6 +2,7 @@ const path = require('path')
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require('dotenv-webpack')
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const CONTENT_DIR = path.resolve(__dirname, 'src')
 const BASE_DIR = path.resolve(__dirname)
@@ -50,6 +51,10 @@ module.exports = {
         new Dotenv({
             path: PRODUCTION ? './.env' : './.env.local', // Path to .env file (this is the default)
             safe: false // load .env.example (defaults to "false" which does not use dotenv-safe)
+        }),
+        new HtmlWebPackPlugin({
+          template: "./src/index.html",
+          filename: "./index.html"
         })
     ],
     devServer: {
