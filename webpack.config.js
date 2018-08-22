@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require('dotenv-webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-const CONTENT_DIR = path.resolve(__dirname, 'src')
+const CONTENT_DIR = path.resolve(__dirname, 'dist')
 const BASE_DIR = path.resolve(__dirname)
 const PRODUCTION = process.env.NODE_ENV === 'production'
 
@@ -58,7 +58,7 @@ module.exports = {
         })
     ],
     devServer: {
-        contentBase: [CONTENT_DIR,BASE_DIR],
+        contentBase: [CONTENT_DIR],
         inline: true,
         port: 4000,
         historyApiFallback: {

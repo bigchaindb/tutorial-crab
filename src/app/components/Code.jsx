@@ -110,8 +110,7 @@ crab.burn(
         // crab is now tagged as "burned",
         // the new publicKey is randomized
         // and the corresponding privateKey "lost"
-        console.log(burnedCrab.transactionHistory.reverse()
-            .map(tx => tx.data))
+        console.log(burnedCrab.data)
     })
 `
         return this.renderCode(code)

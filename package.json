@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bigchaindb-orm": "^2.0.0",
+    "bigchaindb-orm": "^3.0.1",
     "bip39": "^2.5.0",
     "classnames": "^2.2.5",
     "dotenv-webpack": "^1.5.4",

@@ -37,8 +37,7 @@ class Burn extends TutorialStep {
             .then((burnedCrab) => {
                 this.setState({
                     output: JSON.stringify(
-                        burnedCrab.transactionHistory.reverse().map(tx => tx.data)
-                        , null, 2),
+                        burnedCrab.data, null, 2),
                     loading: false
                 })
                 localStorage.clear()
