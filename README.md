@@ -1,6 +1,8 @@
 # [![tutorial-crab](media/repo-banner@2x.png)](https://www.bigchaindb.com)
 
-> A tutorial website using and explaining js-driver-orm use on BigchainDB with interactive examples.
+A tutorial website using and explaining js-driver-orm use on BigchainDB with interactive examples.
+
+Try the CRAB Tutorial available now at https://tutorials.bigchaindb.com/crab/
 
 ## Clone
 Clone or fork this repo
